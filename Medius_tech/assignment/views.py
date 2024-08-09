@@ -90,7 +90,5 @@ def send_summary_email(request):
             print(f'Failed to send email: {e}')
         finally:
             server.quit() 
-        
         return redirect('home-page') 
-
     return render(request, 'home.html')
