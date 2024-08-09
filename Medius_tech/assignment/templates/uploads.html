@@ -1,0 +1,13 @@
+{%extends "base.html"%}
+{%block content%}
+{% if summary %}
+<form action="{% url 'send_email' %}" method="post">
+    {% csrf_token %}    
+    <button type="submit">Send Email</button>
+</form>
+<h2>Grouped Data Summary</h2>
+<div>
+    {{ summary|safe }}
+</div>
+{% endif %}
+{%endblock%}
