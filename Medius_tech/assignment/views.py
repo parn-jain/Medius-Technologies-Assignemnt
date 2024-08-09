@@ -61,17 +61,21 @@ def send_summary_email(request):
         sender_email = 'pjisvgreat@gmail.com'
         receiver_email = 'tech@themedius.ai'
         cc_email = 'yash@themedius.ai'
+        # receiver_email = 'iamparnjain@gmail.com'
+        # cc_email = 'animatehackcode@gmail.com'
         password = EMAIL_PASSWORD
         
         subject = 'Python Assignment - Parn Jain 9399374451'
-        summary = request.session.get('summary', 'No summary available') 
+        summary = request.session.get('summary', 'No summary available')
+        additional_text = "Source code and brief documentation (in README.md file) is on GitHub: https://github.com/parn-jain/Medius-Technologies-Assignemnt" 
+        full_message = f"{additional_text}<br><br>{summary}"
 
         message = MIMEMultipart()
         message['From'] = sender_email
         message['To'] = receiver_email
         message['Cc'] = cc_email
         message['Subject'] = subject
-        message.attach(MIMEText(summary, 'html'))  
+        message.attach(MIMEText(full_message, 'html'))  
         server = None
         
         try:
